@@ -1,14 +1,20 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import Navbar from '../../components/Navbar'
-import metaverse from '../../../public/metaverse.png';
 import { useTranslation } from 'next-i18next'
+
+import styles from '@/styles/Home.module.css'
+
+import Navbar from '../../components/Navbar'
+import { Footer } from '../../components/Footer'
+import metaverse from '../../../public/metaverse.png'
 import { getStaticPaths, makeStaticProps } from '../../lib/getStatic'
 
 export default function Home() {
-  const { t } = useTranslation(['home']);
+  // for i8next translations
+  const { t, u18n, ready } = useTranslation(['common', 'footer']);
+
+  // for my services object in translations
+  const services = t('services', { returnObjects: true });
 
   return (
     <>
@@ -27,32 +33,29 @@ export default function Home() {
             <div className="absolute inset-0 bg-black opacity-20"></div>
             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
               <h1 className="text-4xl text-white font-bold">{t('title')}</h1>
-              <p className="text-lg text-white">Security should not be an afterthought</p>
+              <p className="text-lg text-white">{t('title-blurb')}</p>
             </div>
           </div>
 
           {/* For actual content */}
-          <div className="container mx-auto px-4 py-6">
-            <h1 className="pb-10 text-5xl font-extrabold dark:text-white">{t('services-title')}<small className="ml-2 font-semibold text-gray-500 dark:text-gray-400">by experts</small></h1>
 
-            <h2 className="text-4xl font-bold dark:text-white pb-2">1-Consulting</h2>
-            <p className='pb-5'>We offer to consult on cybersecurity matters ranging from zero-day low-level knowledge to business decisions requiring insight into cybersecurity.</p>
+          <div id="services" className="container mx-auto px-4 py-6">
+            <h1 className="pb-10 text-5xl font-extrabold dark:text-white">{t('services-title')}<small className="ml-2 font-semibold text-gray-500 dark:text-gray-400">{t('services-title-2')}</small></h1>
 
-            <h2 className="text-4xl font-bold dark:text-white py-2">2-Penetration Testing</h2>
-            <p className='pb-5'>Our team of certified red-team professionals can give you a penetration test to ensure that you are hardened for this ever-increasing world of cyber threats. Our penetration test includes a report outlining any findings and any suggestions.</p>
-
-            <h2 className="text-4xl font-bold dark:text-white py-2">3-Endpoint Detection</h2>
-            <p className='pb-5'>We help secure your endpoints by constantly monitoring any domains you possess for any weaknesses.</p>
-
-            <h2 className="text-4xl font-bold dark:text-white py-2">4-Incident Response</h2>
-            <p className='pb-5'>Was there just an incident? Do you need professionals to assess how much damage was done and how to mitigate the next one? Our team can do all these for you and give you recommendations to avoid the next one.</p>
+            {services.map((service) => {
+              return (<div key={service['title']}>
+                      <h2 className="text-4xl font-bold dark:text-white pb-2">{service['title']}</h2>
+                      <p className='pb-5'>{service['description']}</p>
+                      </div>)
+            })}
 
           </div>
         </div>
       </main>
+      <Footer/>
     </>
   )
 }
 
-const getStaticProps = makeStaticProps(['home'])
+const getStaticProps = makeStaticProps(['common', 'footer'])
 export { getStaticPaths, getStaticProps }
