@@ -2,14 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import Navbar from '../components/Navbar'
-import metaverse from '../../public/metaverse.png';
-import { useTranslation } from 'react-i18next'
-
-const inter = Inter({ subsets: ['latin'] })
+import Navbar from '../../components/Navbar'
+import metaverse from '../../../public/metaverse.png';
+import { useTranslation } from 'next-i18next'
+import { getStaticPaths, makeStaticProps } from '../../lib/getStatic'
 
 export default function Home() {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation(['home']);
 
   return (
     <>
@@ -27,14 +26,14 @@ export default function Home() {
             <Image src={metaverse} alt="background" className="w-full" />
             <div className="absolute inset-0 bg-black opacity-20"></div>
             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
-              <h1 className="text-4xl text-white font-bold">TTSecurity</h1>
+              <h1 className="text-4xl text-white font-bold">{t('title')}</h1>
               <p className="text-lg text-white">Security should not be an afterthought</p>
             </div>
           </div>
 
           {/* For actual content */}
           <div className="container mx-auto px-4 py-6">
-            <h1 className="pb-10 text-5xl font-extrabold dark:text-white">Services<small className="ml-2 font-semibold text-gray-500 dark:text-gray-400">by experts</small></h1>
+            <h1 className="pb-10 text-5xl font-extrabold dark:text-white">{t('services-title')}<small className="ml-2 font-semibold text-gray-500 dark:text-gray-400">by experts</small></h1>
 
             <h2 className="text-4xl font-bold dark:text-white pb-2">1-Consulting</h2>
             <p className='pb-5'>We offer to consult on cybersecurity matters ranging from zero-day low-level knowledge to business decisions requiring insight into cybersecurity.</p>
@@ -54,3 +53,6 @@ export default function Home() {
     </>
   )
 }
+
+const getStaticProps = makeStaticProps(['home'])
+export { getStaticPaths, getStaticProps }
