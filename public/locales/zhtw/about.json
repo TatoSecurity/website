@@ -1,0 +1,30 @@
+{
+  "about-title": "TTSecurity - 介紹",
+  "about-blurb-p1": "At TTSecurity, we specialize in providing top-notch cybersecurity solutions and services to small and medium-sized businesses. Our mission is to empower our clients to achieve a robust cybersecurity posture, protect their critical assets, and safeguard their sensitive data from cyber threats.",
+  "about-blurb-p2": "We understand that small and medium-sized businesses face unique cybersecurity challenges and often lack the resources and expertise to implement effective cybersecurity measures. That's why we offer tailored solutions that fit our clients' needs, budget, and level of expertise. Our team of experienced cybersecurity professionals will work closely with your organization to assess your current cybersecurity posture, identify vulnerabilities and risks, and develop a comprehensive cybersecurity strategy that aligns with your business objectives.",
+  "about-blurb-p3": "Whether you need help with network security, endpoint protection, cloud security, compliance, or incident response, we've got you covered. Our solutions are designed to provide maximum protection against cyber threats while minimizing business disruptions and ensuring compliance with industry regulations.",
+  "about-title-2": "Meet our team",
+  "about-omar": {
+    "name": "蔡閎安",
+    "title": "Lead cybersecurity consultant",
+    "blurbs": [
+      "Omar knows",
+      "He knows a lot",
+      "about cybersecurity",
+      "QED"
+    ],
+    "linkedin": "https://www.linkedin.com/in/omar2535/"
+  },
+  "about-jo": {
+    "name": "張楚喬",
+    "title": "Lead cloud architect & software engineer",
+    "blurbs": [
+      "Jo is a great tako",
+      "She nom noms",
+      "and nom noms",
+      "and uhhh, non noms",
+      "QED"
+    ],
+    "linkedin": "https://www.linkedin.com/in/chuqiao-zhang-4391aa221/"
+  }
+}

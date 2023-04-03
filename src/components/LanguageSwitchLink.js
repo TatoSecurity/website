@@ -18,13 +18,19 @@ const LanguageSwitchLink = ({ locale, ...rest }) => {
     href = rest.href ? `/${locale}${rest.href}` : pName
   }
 
+  let displayLocale = locale;
+  // let the locale look like zh-TW or zh-CN
+  if (locale.length == 4) {
+    displayLocale = locale.substring(0, 2) + '-' + locale.substring(2);
+  }
+
   return (
     <Link href={href}>
       <button
         style={{ fontSize: 'small' }}
         onClick={() => languageDetector.cache(locale)}
       >
-        {locale}
+        {displayLocale}
       </button>
     </Link>
   )

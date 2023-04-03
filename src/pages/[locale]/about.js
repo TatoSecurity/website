@@ -4,13 +4,23 @@ import { useTranslation } from 'next-i18next'
 
 import styles from '@/styles/Home.module.css'
 
-import Navbar from '../../components/Navbar'
-import metaverse from '../../../public/metaverse.png'
 import { getStaticPaths, makeStaticProps } from '../../lib/getStatic'
+
+import { Footer } from '@/components/Footer'
+import Navbar from '@/components/Navbar'
+import Profile from '@/components/Profile'
+import Divider from '@/components/Divider'
+
+import omar from "../../../public/omar.jpg"
+import jo from "../../../public/jo.jpg"
 
 
 export default function About() {
-  const { t, u18n, ready } = useTranslation(['common', 'navbar', 'footer']);
+  const { t, u18n, ready } = useTranslation(['about', 'footer', 'navbar',]);
+
+  // For every user's profiles, we generate the translations here first
+  const about_omar = t('about-omar', { returnObjects: true });
+  const about_jo = t('about-jo', { returnObjects: true });
 
   return (
     <>
@@ -22,14 +32,44 @@ export default function About() {
       </Head>
       <Navbar />
       <main className={styles.main}>
-        <div className=''>
-          About us!
+        <div className="p-9">
+          <div id="Section-1">
+            <h1 className='text-4xl text-black font-bold pb-5'>{t('about-title')}</h1>
+            <p>{t('about-blurb-p1')}</p>
+            <br></br>
+            <p>{t('about-blurb-p2')}</p>
+            <br></br>
+            <p>{t('about-blurb-p3')}</p>
+          </div>
+
+          <Divider />
+
+          <div id="our-team">
+            <h1 className='text-4xl text-black font-bold pb-5'>{t('about-title-2')}</h1>
+
+            <Profile
+              name={about_omar['name']}
+              title={about_omar['title']}
+              picture={omar}
+              blurbs={about_omar['blurbs']}
+              linkedin={about_omar['linkedin']}/>
+            <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
+            <Profile
+              name={about_jo['name']}
+              title={about_jo['title']}
+              picture={jo}
+              blurbs={about_jo['blurbs']}
+              linkedin={about_jo['linkedin']}/>
+          </div>
+
+          <Divider />
         </div>
       </main>
+      <Footer />
     </>
   )
 }
 
 
-const getStaticProps = makeStaticProps(['common', 'navbar', 'footer'])
+const getStaticProps = makeStaticProps(['navbar', 'about', 'footer'])
 export { getStaticPaths, getStaticProps }
