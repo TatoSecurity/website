@@ -10,7 +10,7 @@ import { getStaticPaths, makeStaticProps } from '../../lib/getStatic'
 
 
 export default function About() {
-  const { t } = useTranslation(['common', 'about', 'footer']);
+  const { t, u18n, ready } = useTranslation(['common', 'navbar', 'footer']);
 
   return (
     <>
@@ -31,5 +31,5 @@ export default function About() {
 }
 
 
-const getStaticProps = makeStaticProps(['home'])
+const getStaticProps = makeStaticProps(['common', 'navbar', 'footer'])
 export { getStaticPaths, getStaticProps }
