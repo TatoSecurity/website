@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import Image from "next/image";
 import Link from "./Link";
+import logo from '../../public/logo.png'
 
 import i18nextConfig from '../../next-i18next.config'
 import LanguageSwitchLink from './LanguageSwitchLink'
@@ -25,7 +26,7 @@ const Navbar = () => {
     <nav className="bg-gray-900 text-white py-3 md:py-4">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="#" className="text-lg font-bold">
-          <Image src="/logo.png" alt="TTSec" width={50} height={50} />
+          <Image src={logo} alt="TTSec" width={50} height={50} />
         </Link>
         <button className="md:hidden" onClick={toggleDropdown}>
           <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
